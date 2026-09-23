@@ -45,18 +45,30 @@ public class ReportControllerTest {
         ReportController controller = new ReportController();
 
         controller.addReport(
-                new Report(3003, "Patient Report",
-                        "23/09/2026", "Patient records")
+                new Report(
+                        3003,
+                        "Patient Report",
+                        "23/09/2026",
+                        "Patient records"
+                )
         );
 
         controller.addReport(
-                new Report(3001, "Appointment Report",
-                        "23/09/2026", "Appointment records")
+                new Report(
+                        3001,
+                        "Appointment Report",
+                        "23/09/2026",
+                        "Appointment records"
+                )
         );
 
         controller.addReport(
-                new Report(3002, "Treatment Report",
-                        "23/09/2026", "Treatment records")
+                new Report(
+                        3002,
+                        "Treatment Report",
+                        "23/09/2026",
+                        "Treatment records"
+                )
         );
 
         controller.sortReportsById();
@@ -118,6 +130,43 @@ public class ReportControllerTest {
         assertEquals(
                 "25/09/2026",
                 controller.getAppointments().get(1).getDate()
+        );
+    }
+
+    @Test
+    void updatePatientShouldUpdatePatientDetails() {
+
+        PatientController controller = new PatientController();
+
+        Patient patient = new Patient(
+                1001,
+                "John Smith",
+                "0400000000",
+                "Sydney",
+                "01/01/2000"
+        );
+
+        controller.registerPatient(patient);
+
+        boolean result = controller.updatePatient(
+                1001,
+                "John Updated",
+                "0411111111",
+                "Melbourne",
+                "02/02/2000"
+        );
+
+        assertTrue(result);
+
+        Patient updatedPatient = controller.searchPatient(1001);
+
+        assertNotNull(updatedPatient);
+        assertEquals("John Updated", updatedPatient.getName());
+        assertEquals("0411111111", updatedPatient.getPhone());
+        assertEquals("Melbourne", updatedPatient.getAddress());
+        assertEquals(
+                "02/02/2000",
+                updatedPatient.getDateOfBirth()
         );
     }
 }
