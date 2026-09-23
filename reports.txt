@@ -1,0 +1,3 @@
+Report ID: 3001, Type: Appointment Report, Date: 23/09/2026, Content: Appointment records
+Report ID: 3002, Type: Treatment Report, Date: 23/09/2026, Content: Treatment records
+Report ID: 3003, Type: Patient Report, Date: 23/09/2026, Content: Patient records
